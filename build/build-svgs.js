@@ -13,6 +13,8 @@ const iconsDir = path.join(__dirname, '../icons/')
 
 const svgAttributes = {
   class: '',
+  width: '16',
+  height: '16',
   fill: 'currentColor',
   xmlns: 'http://www.w3.org/2000/svg'
 }
@@ -49,24 +51,6 @@ const processFile = (file, config) => new Promise((resolve, reject) => {
             $(svg).removeAttr(attr)
             $(svg).attr(attr, val)
           }
-
-          const dimensions = $(svg).attr('viewBox').split(' ')
-          const svgWidth = dimensions[2] / 16
-          const svgHeight = dimensions[3] / 16
-
-          $(svg).attr('width', `${svgWidth}em`)
-          $(svg).attr('height', `${svgHeight}em`)
-
-          // Todo: Pass argument to script to flip between ems and pixels.
-          // Until then, leaving code here—font-family generation requires
-          // use of pixels.
-
-          // const svgWidth = dimensions[2]
-          // const svgHeight = dimensions[3]
-
-          // $(svg).attr('width', `${svgWidth}`)
-          // $(svg).attr('height', `${svgHeight}`)
-
 
           $(svg).attr('class', `bi bi-${path.basename(file, '.svg')}`)
 
