@@ -7,12 +7,22 @@
 @import "syntax";
 @import "ads";
 
+.hero-notice {
+  background-color: $teal-100;
+
+  @media (min-width: 540px) {
+    border-radius: 5em !important; // stylelint-disable-line declaration-no-important
+  }
+}
+
 .highlight {
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  background-color: $gray-100;
+  border-radius: .25rem;
+
   pre {
-    padding: 1.25rem;
-    margin-bottom: 1.5rem;
-    background-color: rgba(0, 0, 0, .025);
-    border-radius: .25rem;
+    margin-bottom: 0;
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
@@ -31,7 +41,7 @@
   border-top-left-radius: .25rem;
   border-top-right-radius: .25rem;
 
-  + .highlight pre {
+  + .bd-clipboard + .highlight pre {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
@@ -58,13 +68,17 @@
 .hero {
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 
-  .f3 {
-    max-width: 680px;
+  .highlight pre {
+    padding-right: 4em;
+    margin-bottom: 0;
+    border-radius: .5rem;
+  }
+  .btn-clipboard {
+    top: .625em;
   }
 
   hr {
     max-width: 100px;
-
   }
 }
 
@@ -72,24 +86,6 @@
   @media (min-width: 768px) {
     width: 35%;
   }
-}
-
-.bi {
-  display: inline-block;
-  vertical-align: text-bottom;
-}
-
-.list:empty::before {
-  display: block;
-  width: 100%;
-  padding: 100px 2rem;
-  margin-right: 15px;
-  margin-left: 15px;
-  color: $gray-500;
-  text-align: center;
-  content: "Nothing found, try searching again.";
-  background-color: $gray-100;
-  border-radius: .5rem;
 }
 
 .list {
@@ -104,6 +100,24 @@
     }
   }
   // stylelint-enable  declaration-no-important
+
+  .bi {
+    display: inline-block;
+    vertical-align: -.125em;
+  }
+
+  &:empty::before {
+    display: block;
+    width: 100%;
+    padding: 100px 2rem;
+    margin-right: 15px;
+    margin-left: 15px;
+    color: $gray-500;
+    text-align: center;
+    content: "Nothing found, try searching again.";
+    background-color: $gray-100;
+    border-radius: .5rem;
+  }
 }
 
 .btn-group > .btn {
@@ -122,3 +136,47 @@
     }
   }
 }
+
+.icon-examples .bi {
+  width: 1em;
+  height: 1em;
+  vertical-align: -.125em;
+}
+
+.icon-demo {
+  background-color: #fdfdfd;
+  background-image: radial-gradient(circle, #ddd 1px, rgba(0, 0, 0, 0) 1px);
+  background-size: 1rem 1rem;
+}
+
+// stylelint-disable declaration-no-important
+.py-6 {
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+// stylelint-enable declaration-no-important
+
+// stylelint-disable
+@font-face {
+  font-family: bootstrap-icons;
+  src: url("../../font/fonts/bootstrap-icons.woff2?8bd4575acf83c7696dc7a14a966660a3") format("woff2"),
+       url("../../font/fonts/bootstrap-icons.woff?8bd4575acf83c7696dc7a14a966660a3") format("woff");
+}
+
+[class^="bi-"]::before,
+[class*=" bi-"]::before {
+  display: inline-block;
+  font-family: bootstrap-icons !important;
+  font-style: normal;
+  font-weight: 400 !important;
+  font-variant: normal;
+  line-height: 1;
+  text-transform: none;
+  vertical-align: -.125em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bi-alarm::before { content: "\f102"; }
+.bi-github::before { content: "\f3ed"; }
+// stylelint-enable
